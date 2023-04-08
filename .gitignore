@@ -1,5 +1,11 @@
+# C# Ignores
 bin/
 obj/
 /packages/
+# Rider Ignores
 riderModule.iml
 /_ReSharper.Caches/
+# Additional Ignores
+.idea/
+.hide/
+.vscode/

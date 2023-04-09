@@ -31,7 +31,7 @@ public static class Program
             }
             else
             {
-                AnsiConsole.WriteLine($"[red]Task {Markup.Escape(task)} found.[/]");
+                AnsiConsole.MarkupLineInterpolated($"[red]Task {task} found.[/]");
             }
         }
     }

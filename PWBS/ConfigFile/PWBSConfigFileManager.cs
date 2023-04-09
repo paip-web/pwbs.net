@@ -18,7 +18,7 @@ public class PWBSConfigFileManager
         AddConfigurationFilePlugins();
     }
     
-    public object? LoadConfigurationFile(string configurationFilePath = "")
+    public PWBSConfigurationFile? LoadConfigurationFile(string configurationFilePath = "")
     {
         ConfigurationFilePluginInterface? foundConfigurationFilePlugin = null;
         foreach (var configurationFilePlugin in _configurationFilePlugins)
@@ -37,15 +37,23 @@ public class PWBSConfigFileManager
         return data;
     }
     
-    public void SaveConfigurationFile(object data, string configurationFilePath = "")
+    public void SaveConfigurationFile(PWBSConfigurationFile data, string configurationFilePath = "")
     {
         if (LoadedConfigurationFilePlugin == null)
             throw new Exception("No configuration file plugin loaded.");
         LoadedConfigurationFilePlugin.SaveFile(configurationFilePath, data);
     }
     
-    public void NewConfigurationFile(object data, string configurationFilePath = "")
+    public void NewConfigurationFile(PWBSConfigurationFile data, string configurationFilePath = "")
     {
         DefaultConfigurationFilePlugin.NewFile(configurationFilePath, data);
+    }
+    
+    public static string GetDefaultConfigurationFilePath()
+    {
+        return Path.Combine(
+            Environment.CurrentDirectory,
+            "pwbs.json"
+        );
     }
 }

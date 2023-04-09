@@ -36,6 +36,29 @@ public static class PWBSLogger
         AnsiConsole.Write(versionRule);
         AnsiConsole.Write(editionRule);
     }
+
+    /// <summary>
+    /// Execute Task Log Function
+    /// </summary>
+    /// <param name="taskName">Name of Task</param>
+    /// <param name="taskAction">Action of Task</param>
+    public static void ExecuteTask(string taskName, Action taskAction)
+    {
+        var markupString = $"[green]Executing Task: [/][aqua]{Markup.Escape(taskName)}[/]";
+        Rule taskRule = new(markupString)
+        {
+            Style = Style.Parse("green")
+        };
+        AnsiConsole.Write(taskRule);
+
+        taskAction();
+        
+        Rule endRule = new()
+        {
+            Style = Style.Parse("green")
+        };
+        AnsiConsole.Write(endRule);
+    }
     
     /// <summary>
     /// Debug Log Object

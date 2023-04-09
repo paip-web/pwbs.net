@@ -6,7 +6,7 @@ public class ConfigurationFileJsonPlugin: ConfigurationFilePluginInterface
     {
         if (configurationFilePath == "")
             configurationFilePath = PWBSConfigFileManager.GetDefaultConfigurationFilePath();
-        return Path.GetExtension(configurationFilePath) == "json";
+        return Path.GetExtension(configurationFilePath) == ".json";
     }
 
     public PWBSConfigurationFile LoadFile(string configurationFilePath)

@@ -11,6 +11,7 @@ public class PWBSConfigFileManager
 
     private void AddConfigurationFilePlugins()
     {
+        _configurationFilePlugins.Add(new ConfigurationFileJsonPlugin());
     }
     
     public PWBSConfigFileManager()
